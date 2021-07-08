@@ -4,7 +4,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
-	String password = request.getParameter("pw");
+	String guestbookNo = request.getParameter("no");
 	
 %>
 <!DOCTYPE html>
@@ -14,10 +14,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="./delete.jsp" method="post"></form>
+	<form action="./delete.jsp" method="get">
 	비밀번호 <input type="text" name="password" value="">
-	<input type="hidden" name="passwordorigin" value=<%=password %>>
+	<input type="hidden" name="no" value=<%=guestbookNo %>>
 	<button type="submit">확인</button><br>
 	<a href="addList.jsp">매인으로 돌아가기</a>
+	</form>
 </body>
 </html>

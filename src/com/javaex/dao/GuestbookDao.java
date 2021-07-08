@@ -126,7 +126,7 @@ public class GuestbookDao {
 			try {
 				String query = "";
 				query += " delete from guestbook ";
-				query += " where person_id = ? ";
+				query += " where guestbook_no = ? ";
 				pstmt = conn.prepareStatement(query);
 				pstmt.setInt(1, delete);
 
@@ -141,9 +141,9 @@ public class GuestbookDao {
 		
 		//Get Person
 		
-		public GuestbookVo getPerson (int guestPassword) {
+		public String getPerson (int guestbookNo) {
 			
-			GuestbookVo guestbookVo = null;
+			String password = null;
 			getConnection();
 			
 			try {
@@ -151,23 +151,22 @@ public class GuestbookDao {
 				String query = "";
 				query += " select password ";
 				query += " from guestbook ";
-				query += " where person_id = ? ";
+				query += " where guestbook_no = ? ";
 
 				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, guestPassword);
+				pstmt.setInt(1, guestbookNo);
 				rs = pstmt.executeQuery();
 				
 
 				while(rs.next()) {
-					String password = rs.getString("password");
-					guestbookVo = new GuestbookVo(password);
+					password = rs.getString("password");
 				}
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			close();
-			return guestbookVo;
+			return password;
 		}
 	
 }

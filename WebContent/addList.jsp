@@ -43,7 +43,7 @@ List<GuestbookVo> guestbookList = guestbookDao.getList();
 			<td><%=guestbookList.get(i).getGuestbook_no() %></td>
 			<td><%=guestbookList.get(i).getName() %></td>
 			<td><%=guestbookList.get(i).getReg_date() %></td>
-			<td><a href=".deleteForm.jsp?pw=<%=guestbookList.get(i).getPassword()%>">[삭제]</a></td>
+			<td><a href="./deleteForm.jsp?no=<%=guestbookList.get(i).getGuestbook_no() %>">[삭제]</a></td>
 		</tr>
 		<tr>
 			<td colspan ="4"><%=guestbookList.get(i).getContent() %></td>

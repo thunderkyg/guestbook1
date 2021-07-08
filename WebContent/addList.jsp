@@ -19,7 +19,7 @@ List<GuestbookVo> guestbookList = guestbookDao.getList();
 </head>
 <body>
 	<form action="./add.jsp" method="get">
-		<table border="1">
+		<table border="1" width="550">
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="name" value=""></td>
@@ -27,7 +27,7 @@ List<GuestbookVo> guestbookList = guestbookDao.getList();
 				<td><input type="password" name="password" value=""></td>
 			</tr>
 			<tr>
-				<td colspan="4"><textarea name="content"></textarea></td>
+				<td colspan="4"><textarea rows="10" cols="73" name="content"></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="4"><button type="submit">확인</button></td>
@@ -38,7 +38,7 @@ List<GuestbookVo> guestbookList = guestbookDao.getList();
 	<%
 	for (int i = 0; i < guestbookList.size(); i++) {
 	%>
-	<table border = "1">
+	<table border = "1" width="550">
 		<tr>
 			<td><%=guestbookList.get(i).getGuestbook_no() %></td>
 			<td><%=guestbookList.get(i).getName() %></td>

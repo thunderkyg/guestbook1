@@ -2,18 +2,26 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="com.javaex.dao.GuestbookDao"%>
+<%@ page import="com.javaex.vo.GuestbookVo"%>
     
 <%
 	String password = request.getParameter("password");
 	int guestbookNo = Integer.parseInt(request.getParameter("no"))  ;
 	
 	GuestbookDao guestbookDao = new GuestbookDao();
-	String passwordorigin = guestbookDao.getGuestbook(guestbookNo);
+	GuestbookVo deletepw = new GuestbookVo (guestbookNo, password);
+	guestbookDao.guestbookDelete(deletepw);
+	
+	response.sendRedirect("addList.jsp");
+%>
 
-	if(password.equals(passwordorigin)){
+	
+<%-- 	<% 
+ 	if(password.equals(passwordorigin)){
 		guestbookDao.guestbookDelete(guestbookNo);
 		response.sendRedirect("addList.jsp");
-	} else {%>
+	} else {
+	%>
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -25,4 +33,5 @@
 	<a href="addList.jsp">매인으로 돌아가기</a>
 	</body>
 	</html>
-	<% }%>
+	<% }%> 
+ --%>

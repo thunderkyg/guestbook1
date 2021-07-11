@@ -119,7 +119,7 @@ public class GuestbookDao {
 		
 		//Delete
 		
-		public int guestbookDelete(int delete) {
+		public int guestbookDelete(GuestbookVo g) {
 			int count = -1;
 
 			getConnection();
@@ -128,8 +128,10 @@ public class GuestbookDao {
 				String query = "";
 				query += " delete from guestbook ";
 				query += " where guestbook_no = ? ";
+				query += " and password =  ?";
 				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, delete);
+				pstmt.setInt(1, g.getGuestbook_no());
+				pstmt.setString(2, g.getPassword());
 
 				count = pstmt.executeUpdate();
 				System.out.println(count + "건이 삭제되었습니다.");
@@ -140,34 +142,33 @@ public class GuestbookDao {
 			return count;
 		}
 		
-		//Get Person
-		
-		public String getGuestbook (int guestbookNo) {
-			
-			String password = null;
-			getConnection();
-			
-			try {
-				//Query
-				String query = "";
-				query += " select password ";
-				query += " from guestbook ";
-				query += " where guestbook_no = ? ";
-
-				pstmt = conn.prepareStatement(query);
-				pstmt.setInt(1, guestbookNo);
-				rs = pstmt.executeQuery();
-				
-
-				while(rs.next()) {
-					password = rs.getString("password");
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			close();
-			return password;
-		}
+		//Get Password
+//		public String getGuestbook (int guestbookNo) {
+//			
+//			String password = null;
+//			getConnection();
+//			
+//			try {
+//				//Query
+//				String query = "";
+//				query += " select password ";
+//				query += " from guestbook ";
+//				query += " where guestbook_no = ? ";
+//
+//				pstmt = conn.prepareStatement(query);
+//				pstmt.setInt(1, guestbookNo);
+//				rs = pstmt.executeQuery();
+//				
+//
+//				while(rs.next()) {
+//					password = rs.getString("password");
+//				}
+//				
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//			close();
+//			return password;
+//		}
 	
 }

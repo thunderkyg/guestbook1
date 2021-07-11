@@ -8,10 +8,10 @@
 	int guestbookNo = Integer.parseInt(request.getParameter("no"))  ;
 	
 	GuestbookDao guestbookDao = new GuestbookDao();
-	String passwordorigin = guestbookDao.getPerson(guestbookNo);
+	String passwordorigin = guestbookDao.getGuestbook(guestbookNo);
 
 	if(password.equals(passwordorigin)){
-		guestbookDao.personDelete(guestbookNo);
+		guestbookDao.guestbookDelete(guestbookNo);
 		response.sendRedirect("addList.jsp");
 	} else {%>
 	<!DOCTYPE html>

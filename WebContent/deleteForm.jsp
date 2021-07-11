@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	request.setCharacterEncoding("UTF-8");
-	
 	String guestbookNo = request.getParameter("no");
-	
 %>
 <!DOCTYPE html>
 <html>

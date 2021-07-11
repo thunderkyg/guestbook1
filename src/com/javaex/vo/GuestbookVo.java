@@ -3,11 +3,11 @@ package com.javaex.vo;
 public class GuestbookVo {
 
 	// Field
-	int guestbook_no;
-	String name;
-	String password;
-	String content;
-	String reg_date;
+	private int guestbook_no;
+	private String name;
+	private String password;
+	private String content;
+	private String reg_date;
 
 	// Constructor
 	public GuestbookVo() {

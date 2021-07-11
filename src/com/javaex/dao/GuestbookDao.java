@@ -67,6 +67,7 @@ public class GuestbookDao {
 				query += "        content, ";
 				query += "        reg_date ";
 				query += " from guestbook ";
+				query += " order by guestbook_no asc ";
 				
 				pstmt = conn.prepareStatement(query);
 				rs = pstmt.executeQuery();
@@ -118,7 +119,7 @@ public class GuestbookDao {
 		
 		//Delete
 		
-		public int personDelete(int delete) {
+		public int guestbookDelete(int delete) {
 			int count = -1;
 
 			getConnection();
@@ -141,7 +142,7 @@ public class GuestbookDao {
 		
 		//Get Person
 		
-		public String getPerson (int guestbookNo) {
+		public String getGuestbook (int guestbookNo) {
 			
 			String password = null;
 			getConnection();
